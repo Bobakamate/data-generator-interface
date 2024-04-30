@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>Boba Fousseiny Kamate</title>
+     <style>
+        /* Ajoutez vos styles CSS ici */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            
+
+        }
+        td{
+            border-right: 1px solid #ddd;
+            border-left: 1px solid #ddd;
+            border-top: 1px solid #ddd;
+        }
+ 
+
+    </style>
+</head>
+<body style="display: flex; flex-direction: column;justify-content: center;align-items: center;">
+   <div class="container" style="height: 450px;"  >
+  <table  >
+    <tr>
+        <!-- Utiliser *ngFor pour parcourir tous les paramètres -->
+        <ng-container *ngFor="let parametre of SharedData.parametres">
+            <th>{{ parametre.parametreName }}</th>
+        </ng-container>
+    </tr>
+    <tr>
+        <!-- Utiliser *ngFor pour parcourir tous les paramètres -->
+        <ng-container *ngFor="let parametre of SharedData.parametres">
+            <td>
+                <!-- Utiliser *ngFor pour parcourir toutes les valeurs du paramètre -->
+                <ng-container *ngFor="let valeur of parametre.valeurs">
+                    <!-- Afficher la valeur et son pourcentage -->
+                    <tr>
+                       {{ valeur[0]}}:{{ valeur[2] }} 
+                    </tr>
+                </ng-container>
+            </td>
+        </ng-container>
+    </tr>
+</table>
+ </div>
+
+    <div class ="boutton"  style="display: flex;justify-content: space-evenly; margin-top: 20px; width: 100%;color: rebeccapurple;">  
+      <div class="boutton" style="padding-left:40px ;">
+          <button class="boutton-link" (click)="edit()">Modifier</button>
+      </div>  
+      <div class="boutton" style="padding-right:40px ;">
+          <button  class="boutton-link" (click)="next()">Validé</button>
+      </div>  
+   </div> 
+</body>
+</html>

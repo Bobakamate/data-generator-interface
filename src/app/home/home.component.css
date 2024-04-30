@@ -1,0 +1,14 @@
+
+body{
+    color: white;
+    
+    display: flex;
+    padding: 0px ;
+    margin: 0px;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../assets/winter.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+ 

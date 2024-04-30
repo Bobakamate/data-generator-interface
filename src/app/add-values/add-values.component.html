@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title></title>
+ </head>
+<body>
+   <div class="container">
+    <ng-container *ngIf="selectedParametre; else error">
+    <p class="login-text">Saisie des valeurs ( {{ selectedParametre.parametreName }} )</p>
+
+    <div *ngFor="let item of selectedParametre.valeurs let index = index ">
+        <div class="input-param">
+          <input #baseInput type="text" placeholder="valeur de base" [value]="item[0]">
+          <select #typeSelect class="option-param" [value]="item[1]">
+            <option value="Nombre" [selected]="item[1] === 'Nombre'">Nombre</option>
+            <option value="Chaine" [selected]="item[1] === 'Chaine'">Chaine</option>
+            <option value="Intervalle" [selected]="item[1] === 'Intervalle'">Intervalle</option>
+            <!-- Ajoutez d'autres options si nécessaire -->
+          </select>
+          <input #percentageInput type="text" placeholder="pourcentage" [value]="item[2]">
+          <select #intervalTypeSelect class="option-param" [value]="item[3]">
+            <option value="Nombre" [selected]="item[3] === 'Nombre'">Nombre</option>
+            <option value="Intervalle" [selected]="item[3] === 'Intervalle'">Intervalle</option>
+            <!-- Ajoutez d'autres options si nécessaire -->
+          </select>
+          <img src="../../assets/poubelle.png" (click)="Deletes(index)" alt="poubelle" style="height: 30px;width: 30px;margin-left: 3px;margin-top: 3px;">
+
+        </div>
+      </div>
+      
+
+   <div style="display: flex;flex-direction: row;justify-content: space-evenly;">
+    <div class="boutton">
+        <button (click)="NewLine()" class="boutton-link">nouvelle ligne</button>
+    </div>  
+    <div class="boutton">
+        <button (click)="SaveData()" class="boutton-link">Enregistrer</button>
+    </div>  
+   </div>
+  
+    </ng-container>
+    <ng-template #error>
+      <p class="login-text">Paramètre introuvable</p>
+    </ng-template>
+   </div> 
+</body>
+</html>
