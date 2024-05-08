@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Data, Parameter } from './DataModel';
+import { Data, Parameter, ParameterInjection } from './DataModel';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class DataService {
     // Initialisation des données partagées depuis les variables de session
     const storedData = sessionStorage.getItem('sharedData');
     console.log("appelele du constructer ",storedData);
-    this.sharedData = storedData ? JSON.parse(storedData) : { parametres: [], regles: [] };
+    this.sharedData = storedData ? JSON.parse(storedData) : { parametres: [], regles: [],injections :[],injectionsColunm : [],injectionsLine:[] };
   }
   maxIndex(): number {
     if (this.sharedData.parametres.length === 0) {
@@ -21,6 +21,15 @@ export class DataService {
             return (param.id > maxIndex) ? param.id : maxIndex;
         }, -Infinity);
     }
+}
+maxIndexInjection(): number {
+  if (this.sharedData.injectionsColunm.length === 0) {
+      return 0; // Si la liste de paramètres est vide, retourne -1
+  } else {
+      return this.sharedData.injectionsColunm.reduce((maxIndex, param) => {
+          return (param.id > maxIndex) ? param.id : maxIndex;
+      }, -Infinity);
+  }
 }
 
 
@@ -43,6 +52,9 @@ export class DataService {
   }
   getParameterById(id: number): Parameter {
     return this.sharedData.parametres.find(parametre => parametre.id === id);
+}
+getParameterByIdInjectionColunm(id: number): ParameterInjection {
+  return this.sharedData.injectionsColunm.find(parametre => parametre.id === id);
 }
 
 
@@ -67,6 +79,10 @@ export class DataService {
       this.sharedData.parametres = this.sharedData.parametres.filter(param => param.id !== parameterId);
     this.setSharedData(this.sharedData); // Mise à jour des données partagées
    }
+   removeParameterInjection(parameterId: number): void {
+    this.sharedData.injectionsColunm = this.sharedData.injectionsColunm.filter(param => param.id !== parameterId);
+  this.setSharedData(this.sharedData); // Mise à jour des données partagées
+ }
 
   updateParameter(parameter: Parameter): void {
     const index = this.sharedData.parametres.findIndex(param => param.id === parameter.id);
@@ -111,7 +127,43 @@ deleteRuleByIndex(index: number): void {
     console.error(`Index ${index} hors des limites.`);
   }
 }
- 
+deleteRuleByIndexInjection(index: number): void {
+  if (index >= 0 && index < this.sharedData.injections.length) {
+    // Supprimer la règle de la liste des règles
+    this.sharedData.injections.splice(index, 1);
+    // Mettre à jour les données partagées
+    this.setSharedData(this.sharedData);
+  } else {
+    console.error(`Index ${index} hors des limites.`);
+  }
+}
+
+deleteRuleByIndexInjectionColunm(index: number, id: number): void {
+  // Rechercher la structure de données correspondant à l'ID donné
+  const structure = this.sharedData.injectionsColunm.find(
+    (colunm) => colunm.id === id
+  );
+
+  // Vérifier si la structure correspondante a été trouvée
+  if (structure) {
+    // Vérifier si l'index est valide pour la liste des valeurs de la structure
+    if (index >= 0 && index < structure.valeurs.length) {
+      // Supprimer la règle de la liste des règles de la structure
+      structure.valeurs.splice(index, 1);
+      console.log(
+        "deleteRuleByIndexInjection ::::::: ",
+        structure.valeurs
+      );
+      // Mettre à jour les données partagées
+      this.setSharedData(this.sharedData);
+    } else {
+      console.error(`Index ${index} hors des limites pour l'ID ${id}.`);
+    }
+  } else {
+    console.error(`Aucune structure de données trouvée pour l'ID ${id}.`);
+  }
+}
+
 
 
  }

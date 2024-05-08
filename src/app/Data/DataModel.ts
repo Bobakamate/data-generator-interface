@@ -12,6 +12,12 @@ export interface Parameter {
     valeurs: string[][];
   }
   
+  export interface ParameterInjection {
+    id :number;
+    parametreName: string;
+    valeurs: injections[];
+  }
+  
 
   export interface Condition {
     id :number;
@@ -23,8 +29,21 @@ export interface Parameter {
     NextName: string;
 
   }
+  export interface injections {
+    id :number;
+    parametreName: string;
+    parametreId :number;
+    operator: string;
+    value: string;
+    actions : String[]
+
+  }
   export interface Data {
     parametres: Parameter[];
     regles: Condition[];
+    injections : injections[];
+    injectionsColunm :  ParameterInjection[];
+    injectionsLine : String[][];
+
   }
   

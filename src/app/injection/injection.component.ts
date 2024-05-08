@@ -1,24 +1,26 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../Data/data.service';
-import { Condition } from '../Data/DataModel';
-import { Data } from '../Data/DataModel'; 
-
+import { Condition, Data, injections } from '../Data/DataModel';
 
 @Component({
-  selector: 'app-rules',
-  templateUrl: './rules.component.html',
+  selector: 'app-injection',
+  templateUrl: './injection.component.html',
   styleUrls: ['../home/home.component.css']
 })
-export class RulesComponent  {
+export class InjectionComponent  {
+
   SharedData : Data;
-  RulesList : Condition[];
+  RulesList : injections[];
   ParamId: number[];
   paramName:String[];
   @ViewChildren('parameter') parameterInputs: QueryList<ElementRef<HTMLSelectElement>>;
   @ViewChildren('operator') operatorInputs: QueryList<ElementRef<HTMLSelectElement>>;
   @ViewChildren('value') valueInputs: QueryList<ElementRef<HTMLInputElement>>;
-  @ViewChildren('next') nextInputs: QueryList<ElementRef<HTMLSelectElement>>;
+
+  @ViewChildren('parameterAction') parameterAction: QueryList<ElementRef<HTMLSelectElement>>;
+  @ViewChildren('operatorAction') operatorAction: QueryList<ElementRef<HTMLSelectElement>>;
+  @ViewChildren('valueAction') valueAction: QueryList<ElementRef<HTMLInputElement>>;
 
   constructor(private route: ActivatedRoute,private router: Router, private dataService: DataService) {
     this.SharedData = dataService.getSharedData();
@@ -26,7 +28,7 @@ export class RulesComponent  {
     console.log("les om de parametre ",this.paramName);
     console.log("les om de parametre data service  ",dataService.getparamName());
     this.ParamId = dataService.getParamId();
-    this.RulesList = this.SharedData.regles;
+    this.RulesList = this.SharedData.injections;
    }
   NewLine(){
     let newRule = {
@@ -35,8 +37,7 @@ export class RulesComponent  {
       parametreId :0,
       operator: "add",
       value: "" ,
-      NextId: 0,
-      NextName: ""
+      actions:["","",""]
   
     }
     this.RulesList.push(newRule);
@@ -49,7 +50,9 @@ export class RulesComponent  {
     const parameterInputs = this.parameterInputs.toArray();
     const operatorInputs = this.operatorInputs.toArray();
     const valueInputs = this.valueInputs.toArray();
-    const nextInputs = this.nextInputs.toArray();
+    const parameterAction = this.parameterAction.toArray() ;
+    const operatorAction =  this.operatorAction.toArray();
+    const  valueAction =  this.valueAction.toArray();
 
     // Parcourir toutes les règles
     for (let i = 0; i < parameterInputs.length; i++) {
@@ -59,18 +62,17 @@ export class RulesComponent  {
           const parameterValue = parameterInputs[i].nativeElement.value;
           const operatorValue = operatorInputs[i].nativeElement.value;
           const value = valueInputs[i].nativeElement.value;
-          const nextValue = nextInputs[i].nativeElement.value;
-            const rule = {
+          
+             const rule = {
               id : i,
               parametreName: parameterValue,
               operator: operatorValue,
               parametreId :this.getIdByName(parameterValue),
               value: value,
-              NextId: this.getIdByName(nextValue),
-              NextName: nextValue
+              actions:[parameterAction[i].nativeElement.value,operatorAction[i].nativeElement.value,valueAction[i].nativeElement.value]
           };
           this.RulesList.push(rule);
-          this.SharedData.regles =  this.RulesList ;
+          this.SharedData.injections =  this.RulesList ;
           this.dataService.setSharedData(this.SharedData);
 
 
@@ -80,13 +82,13 @@ export class RulesComponent  {
 
     // Afficher les règles mises à jour
     console.log("RulesList mise à jour :", this.RulesList);
-    this.router.navigate(['rules-views']);
+    this.router.navigate(['injection-box']);
 }
 
   Deletes(id :number){
-    this.dataService.deleteRuleByIndex(id);
+    this.dataService.deleteRuleByIndexInjection(id);
     this.SharedData = this.dataService.getSharedData();
-    this.RulesList = this.SharedData.regles;
+    this.RulesList = this.SharedData.injections;
     
 
   }
@@ -94,7 +96,5 @@ export class RulesComponent  {
      const index = this.paramName.indexOf(name);
      return index;
 }
-
  
-
 }

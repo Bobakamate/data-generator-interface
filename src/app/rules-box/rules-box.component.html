@@ -11,7 +11,7 @@
    <div class="container">
  
      
-        <p class="login-text">Ajout des Regles (Optionnel)</p>
+        <p class="login-text">Logique de Structuration (Optionnel)</p>
         
         
           
@@ -19,9 +19,15 @@
           
           
           
-    <div class="boutton" style="display: flex;justify-content: space-evenly;margin-top: 100px;">        
-        <button id="button-add-param" (click)="add()">Ajouter</button>
+    <div class="boutton" style="display: flex;flex-direction:row;justify-content: space-evenly;margin-top: 100px;">   
+      <div style="display: flex;flex-direction:column;justify-content: space-evenly;" >
+         <button id="button-add-param" style="margin-bottom: 40px;" (click)="add()">Regles</button>
+         <button id="button-add-param" (click)="injection()">Injections</button>
+      </div>     
+        <div style="display: flex;flex-direction:column;justify-content: space-evenly;" >
+         <button id="button-add-param"  style="margin-bottom: 40px;"  (click)="echantillon()">Echantillonnage</button>
         <button id="button-add-param" (click)="next()">Suivant</button>
+        </div>
      </div>
    </div> 
 </body>

@@ -1,0 +1,38 @@
+<!-- Fichier: app.component.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>Boba Fousseiny Kamate</title>
+ </head>
+<body>
+   <div class="container">
+ 
+     
+        <p class="login-text">Ajout des Parametre</p>
+        
+        <div>
+            <div class="input-param" *ngFor="let input of sharedDataParam; let i = index">
+              <input type="text" [id]="'param' + i" placeholder="Entrez le nom du Parametre" [value]="input.parametreName" #paramInput required>
+              <div class="boutton">
+                <button (click)="addValues(input.id)" class="boutton-link">Ajouter les valeurs</button>
+                <img src="../../assets/poubelle.png" (click)="Deletes(input.id)" alt="poubelle" style="height: 30px;width: 30px;margin-left: 3px;margin-top: 3px;">
+              </div>
+            </div>
+          </div>
+          
+
+          
+          
+          
+    <div class="boutton" style="display: flex;justify-content: space-evenly;">        
+        <button id="button-add-param" (click)="addParametre(sharedDataParam)">Ajouter un Parametre</button>
+         
+        <button id="button-add-param" (click)="next(sharedDataParam)">Enregistre</button>
+    </div>
+   </div> 
+</body>
+</html>
+

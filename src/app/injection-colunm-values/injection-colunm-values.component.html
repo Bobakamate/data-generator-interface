@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>Boba Fousseiny Kamate</title>
+ </head>
+<body>
+    <div class="container">
+        <ng-container *ngIf="selectedParametre; else error">
+            <p class="login-text">Regles de Renmplissage ( {{ selectedParametre.parametreName }} )</p>
+            
+             <div *ngFor="let rule of selectedParametre.valeurs; let i = index" >
+                <div class="input-param">
+                    <select class="option-param" #parameter>
+                        <option *ngFor="let param of paramName" [value]="param" [selected]="rule.parametreName === param">{{ param }}</option>
+                    </select>
+                    
+                    <select class="option-param" #operator>
+                        <option value="Egale" [selected]="rule.operator === 'Egale'">Egale</option>
+                        <option value="Inferiere" [selected]="rule.operator === 'Inferiere'">Inferiere</option>
+                        <option value="Superieur" [selected]="rule.operator === 'Superieur'">Superieur</option>
+                        <option value="Intervalle" [selected]="rule.operator === 'Intervalle'">Intervalle</option>
+                    </select>
+                    
+                    <input type="text" placeholder="Conditions" #value [value]="rule.value">
+                    
+                 
+                    
+                    <img src="../../assets/poubelle.png" (click)="Deletes(i)" alt="poubelle"
+                        style="height: 30px;width: 30px;margin-left: 3px;margin-top: 3px;">
+                </div>
+                <div class="input-param">
+                    <select class="option-param" #parameterAction>
+                        <option >{{ selectedParametre.parametreName}}</option>
+                    </select>
+                    
+                    <select class="option-param" #operatorAction>
+                        <option value="Egale" [selected]="rule.actions[1] === 'Egale'">Egale</option>
+                        <option value="Inferiere" [selected]="rule.actions[1] === 'Inferiere'">Inferiere</option>
+                        <option value="Superieur" [selected]="rule.actions[1] === 'Superieur'">Superieur</option>
+                        <option value="Intervalle" [selected]="rule.actions[1] === 'Intervalle'">Intervalle</option>
+                    </select>
+                    
+                    <input type="text" placeholder="Actions" #valueAction [value]="rule.actions[2]">
+                    
+                 
+                    
+                    <img src="../../assets/poubelle.png" (click)="Deletes(i)" alt="poubelle"
+                        style="height: 30px;width: 30px;margin-left: 3px;margin-top: 3px;">
+                </div>
+            </div>
+            
+           
+            <div style="display: flex;flex-direction: row;justify-content: space-evenly;">
+                <div class="boutton">
+                    <button  class="boutton-link" (click)="NewLine()">nouvelle ligne</button>
+                </div>
+                <div class="boutton">
+                    <button   class="boutton-link" (click)="SaveData()">Enregistrer</button>
+                </div>
+            </div>
+    
+    </ng-container>
+    <ng-template #error>
+      <p class="login-text">Paramètre introuvable</p>
+    </ng-template>
+</div>
+    
+</body>
+</html>
+

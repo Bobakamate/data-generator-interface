@@ -1,0 +1,50 @@
+<!-- Fichier: app.component.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>Boba Fousseiny Kamate</title>
+ </head>
+<body>
+   <div class="container">
+ 
+     
+        <p class="login-text">Injections de donnees</p>
+        
+        
+        
+          
+
+          
+          
+          
+    <div class="boutton" style="display: flex;flex-direction:row;justify-content: space-evenly;margin-top: 70px;">   
+      <div style="display: flex;flex-direction:column;justify-content: space-evenly;"   >
+         <div style="margin-bottom: 40px;display: flex;align-items: center;flex-direction: column;" (click)="NewLine()">
+            <p style="color: white;font-size: 18px;font-weight: bold;">Ajout de lignes</p>  
+            <img  style="height:50px;width:50px" src="../../assets/add.png"  alt="ajout de ligne">
+         </div>
+         <div style="margin-bottom: 40px;display: flex;align-items: center;flex-direction: column;" (click)="Edit()">
+            <p style="color: white;font-size: 18px;font-weight: bold;">Modifier</p>  
+            <img  style="height:50px;width:50px" src="../../assets/edit.png"  alt="ajout de ligne">
+         </div> 
+         
+       </div>     
+       
+        <div style="display: flex;flex-direction:column;justify-content: space-evenly;" >
+            <div style="margin-bottom: 40px;display: flex;align-items: center;flex-direction: column;"(click)="NewColunm()">
+                <p style="color: white;font-size: 18px;font-weight: bold;">Ajout de Colonnes</p>  
+                <img  style="height:50px;width:50px" src="../../assets/columns.png"  alt="ajout de ligne">
+             </div>  
+             <div style="margin-bottom: 40px;display: flex;align-items: center;flex-direction: column;"(click)="Back()">
+                <p style="color: white;font-size: 18px;font-weight: bold;">Retour</p>  
+                <img  style="height:50px;width:50px" src="../../assets/log-out.png"  alt="ajout de ligne">
+             </div>      
+         </div>
+     </div>
+   </div> 
+</body>
+</html>
+

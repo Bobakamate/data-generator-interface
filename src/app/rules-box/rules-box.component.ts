@@ -20,5 +20,16 @@ export class RulesBoxComponent {
 
 
   }
+  injection(){
+    this.router.navigate(['injection-box']);
+
+
+  }
+  echantillon(){
+    this.router.navigate(['echantillonnage']);
+
+
+  }
+  
 
 }
