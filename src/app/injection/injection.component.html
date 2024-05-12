@@ -23,32 +23,17 @@
                         <option value="Intervalle" [selected]="rule.operator === 'Intervalle'">Intervalle</option>
                     </select>
                     
-                    <input type="text" placeholder="Conditions" #value [value]="rule.value">
+                    <input type="text" placeholder="Actions" #value [value]="rule.value">
+                    <div class="boutton">
+                        <button (click)="AddConditions(i)" class="boutton-link">Conditions</button>
+                    </div>  
                     
                  
                     
                     <img src="../../assets/poubelle.png" (click)="Deletes(i)" alt="poubelle"
                         style="height: 30px;width: 30px;margin-left: 3px;margin-top: 3px;">
                 </div>
-                <div class="input-param">
-                    <select class="option-param" #parameterAction>
-                        <option *ngFor="let param of paramName" [value]="param" [selected]="param === rule.actions[0]">{{ param }}</option>
-                    </select>
-                    
-                    <select class="option-param" #operatorAction>
-                        <option value="Egale" [selected]="rule.actions[1] === 'Egale'">Egale</option>
-                        <option value="Inferiere" [selected]="rule.actions[1] === 'Inferiere'">Inferiere</option>
-                        <option value="Superieur" [selected]="rule.actions[1] === 'Superieur'">Superieur</option>
-                        <option value="Intervalle" [selected]="rule.actions[1] === 'Intervalle'">Intervalle</option>
-                    </select>
-                    
-                    <input type="text" placeholder="Actions" #valueAction [value]="rule.actions[2]">
-                    
-                 
-                    
-                    <img src="../../assets/poubelle.png" (click)="Deletes(i)" alt="poubelle"
-                        style="height: 30px;width: 30px;margin-left: 3px;margin-top: 3px;">
-                </div>
+                
             </div>
             
            

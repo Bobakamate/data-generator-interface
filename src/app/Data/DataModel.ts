@@ -29,13 +29,33 @@ export interface Parameter {
     NextName: string;
 
   }
+
+  export interface InjectionLineParameter {
+    id :number;
+    parametreName: string;
+    parametreId :number;
+    value: string;
+
+  }
+  export interface dynamicParameter {
+    id :number;
+    parametreName: string;
+    parametreId :number;
+    value: string[];
+
+  }
+  export interface injectionsLine{
+    parameters: InjectionLineParameter[],
+    dynamicParameter : dynamicParameter[],
+    reference :String[][]
+  }
   export interface injections {
     id :number;
     parametreName: string;
     parametreId :number;
     operator: string;
     value: string;
-    actions : String[]
+    conditions : String[][]
 
   }
   export interface Data {
@@ -43,7 +63,7 @@ export interface Parameter {
     regles: Condition[];
     injections : injections[];
     injectionsColunm :  ParameterInjection[];
-    injectionsLine : String[][];
+    injectionsLine : injectionsLine;
 
   }
   

@@ -16,6 +16,9 @@ import { InjectionColunmComponent } from './injection-colunm/injection-colunm.co
 import { InjectionLineComponent } from './injection-line/injection-line.component';
 import { InjectionColunmValuesComponent } from './injection-colunm-values/injection-colunm-values.component';
 import { EchantillonnageComponent } from './echantillonnage/echantillonnage.component';
+import { ConditionsComponent } from './conditions/conditions.component';
+import { ReferenceComponent } from './reference/reference.component';
+import { DynamicValuesComponent } from './dynamic-values/dynamic-values.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { EchantillonnageComponent } from './echantillonnage/echantillonnage.comp
     InjectionColunmComponent,
     InjectionLineComponent,
     InjectionColunmValuesComponent,
-    EchantillonnageComponent
+    EchantillonnageComponent,
+    ConditionsComponent,
+    ReferenceComponent,
+    DynamicValuesComponent
   ],
   imports: [
     BrowserModule,

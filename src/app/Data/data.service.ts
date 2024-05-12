@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Data, Parameter, ParameterInjection } from './DataModel';
+import { Data, Parameter, ParameterInjection,injections } from './DataModel';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,21 @@ export class DataService {
     // Initialisation des données partagées depuis les variables de session
     const storedData = sessionStorage.getItem('sharedData');
     console.log("appelele du constructer ",storedData);
-    this.sharedData = storedData ? JSON.parse(storedData) : { parametres: [], regles: [],injections :[],injectionsColunm : [],injectionsLine:[] };
-  }
+    this.sharedData = storedData ? JSON.parse(storedData) : { 
+      parametres: [], 
+      regles: [], 
+      injections: [], 
+      injectionsColunm: [], 
+      injectionsLine: { 
+        parameters: [], 
+        dynamicParameter: [], 
+        reference: [
+          [],
+          []
+        ] 
+      } 
+    };
+      }
   maxIndex(): number {
     if (this.sharedData.parametres.length === 0) {
         return 0; // Si la liste de paramètres est vide, retourne -1
@@ -53,6 +66,9 @@ maxIndexInjection(): number {
   getParameterById(id: number): Parameter {
     return this.sharedData.parametres.find(parametre => parametre.id === id);
 }
+getInjectionById(id: number): injections {
+  return this.sharedData.injections.find(parametre => parametre.id === id);
+}
 getParameterByIdInjectionColunm(id: number): ParameterInjection {
   return this.sharedData.injectionsColunm.find(parametre => parametre.id === id);
 }
@@ -91,6 +107,13 @@ getParameterByIdInjectionColunm(id: number): ParameterInjection {
       this.setSharedData(this.sharedData); // Mise à jour des données partagées
     }
    }
+   updateInjection(parameter: injections): void {
+    const index = this.sharedData.injections.findIndex(param => param.id === parameter.id);
+    if (index !== -1) {
+      this.sharedData.injections[index] = parameter;
+      this.setSharedData(this.sharedData); // Mise à jour des données partagées
+    }
+   }
    deleteValueById(id: number, parametreId: number): void {
     console.log("ID de la valeur à supprimer :", id);
     console.log("Avant la suppression :", this.getParameterById(parametreId));
@@ -109,6 +132,24 @@ getParameterByIdInjectionColunm(id: number): ParameterInjection {
         console.log("Le paramètre avec l'ID spécifié n'a pas été trouvé.");
     }
 }
+deleteInjectionValueById(id: number, parametreId: number): void {
+  console.log("ID de la valeur à supprimer injections :", id);
+  console.log("Avant la suppression Injections :....", this.getInjectionById(parametreId));
+  
+  const parametre = this.sharedData.injections.find(param => param.id === parametreId);
+  if (parametre) {
+      const valeurIndex = id;
+      if (valeurIndex !== -1) {
+          parametre.conditions.splice(valeurIndex, 1); // Supprimer la valeur du tableau
+          console.log("Après la suppression :", this.getParameterById(parametreId));
+          this.setSharedData(this.sharedData); // Mise à jour des données partagées
+      } else {
+          console.log("La valeur avec l'ID spécifié n'a pas été trouvée.");
+      }
+  } else {
+      console.log("Le paramètre avec l'ID spécifié n'a pas été trouvé.");
+  }
+}
 getparamName(): string[] {
   return this.sharedData.parametres.map(param => param.parametreName);
 }
@@ -121,6 +162,16 @@ deleteRuleByIndex(index: number): void {
   if (index >= 0 && index < this.sharedData.regles.length) {
     // Supprimer la règle de la liste des règles
     this.sharedData.regles.splice(index, 1);
+    // Mettre à jour les données partagées
+    this.setSharedData(this.sharedData);
+  } else {
+    console.error(`Index ${index} hors des limites.`);
+  }
+}
+deleteDynamicValueByIndex(index: number): void {
+  if (index >= 0 && index < this.sharedData.injectionsLine.dynamicParameter.length) {
+    // Supprimer la règle de la liste des règles
+    this.sharedData.injectionsLine.dynamicParameter.splice(index, 1);
     // Mettre à jour les données partagées
     this.setSharedData(this.sharedData);
   } else {

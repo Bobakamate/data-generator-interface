@@ -1,1 +1,39 @@
-<p>injection-line works!</p>
+<!-- Fichier: app.component.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>Boba Fousseiny Kamate</title>
+ </head>
+<body>
+   <div class="container">
+ 
+     
+        <p class="login-text">Injections de lignes</p>
+        
+        <div class="input-param" *ngFor="let param of paramName; let i = index">
+          <select class="option-param" #parameter>
+            <option [value]="param">{{ param }}</option>
+          </select>
+          <input type="text" placeholder="Entrez la valeur (optionnel)" [value]="selectedParameters[i]?.value || ''" #paramInput required>
+        </div>
+        
+          
+
+          
+          
+          
+    <div class="boutton" style="display: flex;justify-content: space-evenly;margin-top: 20px;">        
+        <button id="button-add-param" (click)="dynamicValues()" >valeur dynamic</button>
+         
+        <button id="button-add-param" (click)="reference()" >Ajouter une reference</button>
+    </div>
+    <div class="boutton" style="margin-top: 40px;">
+      <button  class="boutton-link" (click)="SaveData()">Enregistrer</button>
+    </div>
+   </div> 
+</body>
+</html>
+

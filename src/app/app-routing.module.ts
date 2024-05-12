@@ -13,6 +13,9 @@ import { InjectionLineComponent } from './injection-line/injection-line.componen
 import { InjectionColunmComponent } from './injection-colunm/injection-colunm.component';
 import { InjectionColunmValuesComponent } from './injection-colunm-values/injection-colunm-values.component';
 import { EchantillonnageComponent } from './echantillonnage/echantillonnage.component';
+import { ConditionsComponent } from './conditions/conditions.component';
+import { ReferenceComponent } from './reference/reference.component';
+import { DynamicValuesComponent } from './dynamic-values/dynamic-values.component';
 
 const routes: Routes = [
 
@@ -28,15 +31,12 @@ const routes: Routes = [
   {path:"injection-colunm", component:InjectionColunmComponent},
   {path:"injection-add-values", component:InjectionColunmValuesComponent},
   {path:"echantillonnage", component:EchantillonnageComponent},
-
-
-  
-
-
-
-  
-
+  {path:"conditions",component:ConditionsComponent},
   {path:"generation", component:GenerationComponent},
+  {path:"reference", component:ReferenceComponent},
+  {path:"dynamic-values", component:DynamicValuesComponent},
+
+
 
 
 ];

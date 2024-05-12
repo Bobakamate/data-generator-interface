@@ -1,0 +1,39 @@
+<!-- Fichier: app.component.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>Boba Fousseiny Kamate</title>
+ </head>
+<body>
+   <div class="container">
+ 
+        <p class="login-text">Definitions des Parametres dynamic</p>
+        
+        <div class="input-param" *ngFor="let dynamicval of dynamicParameters let i = index" >
+            <select class="option-param" #parameter>
+                <option *ngFor="let param of paramName" [value]="param" [selected]="dynamicval.parametreName == param">{{ param }}</option>
+            </select> 
+            <input type="text" placeholder="Entrez l'intervalle" value="{{ dynamicval.value[0] }}" #paramInput required>
+            <select #fonction class="option-param">
+                <option value="Arithmetique" [selected]="dynamicval.value[1] === 'Arithmetique'">Arithmetique</option>
+                <option value="geometrique" [selected]="dynamicval.value[1] === 'geometrique'">geometrique</option>
+            </select>
+            <select #limite class="option-param">
+                <option value="limitValue" [selected]="dynamicval.value[2] === 'limitValue'">limitValue</option>
+                <option value="beforeValue" [selected]="dynamicval.value[2] === 'beforeValue'">beforeValue</option>
+            </select>
+            <img src="../../assets/poubelle.png" (click)="Deletes(i)" alt="poubelle" style="height: 30px;width: 30px;margin-left: 3px;margin-top: 3px;">
+
+        </div>
+          
+    <div class="boutton" style="display: flex;justify-content: space-evenly;margin-top: 20px;">        
+        <button id="button-add-param" (click)="NewLine()">nouvelle ligne</button>
+        <button id="button-add-param" (click)="SaveData()">Enregistrer</button>
+    </div>
+    
+   </div> 
+</body>
+</html>

@@ -9,6 +9,7 @@ import { Condition, Data, injections } from '../Data/DataModel';
   styleUrls: ['../home/home.component.css']
 })
 export class InjectionComponent  {
+  id :number = 0;
 
   SharedData : Data;
   RulesList : injections[];
@@ -18,9 +19,7 @@ export class InjectionComponent  {
   @ViewChildren('operator') operatorInputs: QueryList<ElementRef<HTMLSelectElement>>;
   @ViewChildren('value') valueInputs: QueryList<ElementRef<HTMLInputElement>>;
 
-  @ViewChildren('parameterAction') parameterAction: QueryList<ElementRef<HTMLSelectElement>>;
-  @ViewChildren('operatorAction') operatorAction: QueryList<ElementRef<HTMLSelectElement>>;
-  @ViewChildren('valueAction') valueAction: QueryList<ElementRef<HTMLInputElement>>;
+  
 
   constructor(private route: ActivatedRoute,private router: Router, private dataService: DataService) {
     this.SharedData = dataService.getSharedData();
@@ -37,22 +36,15 @@ export class InjectionComponent  {
       parametreId :0,
       operator: "add",
       value: "" ,
-      actions:["","",""]
+      conditions:[]
   
     }
-    this.RulesList.push(newRule);
-
-
-  }
-  SaveData() {
     this.RulesList = [];
     // Récupérer les éléments HTML à partir des QueryLists
     const parameterInputs = this.parameterInputs.toArray();
     const operatorInputs = this.operatorInputs.toArray();
     const valueInputs = this.valueInputs.toArray();
-    const parameterAction = this.parameterAction.toArray() ;
-    const operatorAction =  this.operatorAction.toArray();
-    const  valueAction =  this.valueAction.toArray();
+    
 
     // Parcourir toutes les règles
     for (let i = 0; i < parameterInputs.length; i++) {
@@ -67,9 +59,46 @@ export class InjectionComponent  {
               id : i,
               parametreName: parameterValue,
               operator: operatorValue,
-              parametreId :this.getIdByName(parameterValue),
+              parametreId :this.getIdByName(parameterValue) +1,
               value: value,
-              actions:[parameterAction[i].nativeElement.value,operatorAction[i].nativeElement.value,valueAction[i].nativeElement.value]
+              conditions:[]
+          };
+          this.RulesList.push(rule);
+          this.SharedData.injections =  this.RulesList ;
+          this.dataService.setSharedData(this.SharedData);
+
+
+           
+       
+    }
+    this.RulesList.push(newRule);
+
+
+  }
+  SaveData() {
+    this.RulesList = [];
+    // Récupérer les éléments HTML à partir des QueryLists
+    const parameterInputs = this.parameterInputs.toArray();
+    const operatorInputs = this.operatorInputs.toArray();
+    const valueInputs = this.valueInputs.toArray();
+    
+
+    // Parcourir toutes les règles
+    for (let i = 0; i < parameterInputs.length; i++) {
+        // Vérifier si RulesList[i] existe
+  
+          // Récupérer les valeurs des éléments HTML correspondant à chaque règle
+          const parameterValue = parameterInputs[i].nativeElement.value;
+          const operatorValue = operatorInputs[i].nativeElement.value;
+          const value = valueInputs[i].nativeElement.value;
+          
+             const rule = {
+              id : i,
+              parametreName: parameterValue,
+              operator: operatorValue,
+              parametreId :this.getIdByName(parameterValue) +1,
+              value: value,
+              conditions:[]
           };
           this.RulesList.push(rule);
           this.SharedData.injections =  this.RulesList ;
@@ -96,5 +125,10 @@ export class InjectionComponent  {
      const index = this.paramName.indexOf(name);
      return index;
 }
- 
+AddConditions(id :number){
+     this.router.navigate(['conditions'], { queryParams: { id: id } });  }
+
+
 }
+ 
+

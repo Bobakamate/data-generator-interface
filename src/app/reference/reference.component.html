@@ -1,0 +1,54 @@
+<!-- Fichier: app.component.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>Boba Fousseiny Kamate</title>
+ </head>
+<body>
+   <div class="container">
+ 
+     
+        <p class="login-text">Definitions de la Reference</p>
+        <div class="input-param"   >
+ 
+            <select class="option-param" >
+                <option >Frequences d'injection des donnees</option>
+            </select> 
+            <input type = "number"  placeholder="valeurs" [value]="sharedData.injectionsLine.reference[0][0] || ''" #injectionFrequence>
+            <select class="option-param"  #statue>
+                <option value="desative" [selected]="sharedData.injectionsLine.reference[0][1] === 'desative'">desative</option>
+                <option value="active" [selected]="sharedData.injectionsLine.reference[0][1]  === 'active'">active</option>
+
+            </select> 
+
+            
+          </div>
+        <div class="input-param"   >
+ 
+            <select class="option-param" #parameter>
+                <option *ngFor="let param of paramName" [value]="param" [selected]="sharedData.injectionsLine.reference[1][0]  === param"   >{{ param }}</option>
+            </select> 
+            <select #fonction class="option-param">
+                <option value="Arithmetique" [selected]="sharedData.injectionsLine.reference[1][1]  === 'Arithmetique'">Arithmetique</option>
+                <option value="geometrique" [selected]="sharedData.injectionsLine.reference[1][1]  === 'geometrique'">geometrique</option>
+            </select>
+            <input placeholder="Entrez la raison" type = "number" [value]="sharedData.injectionsLine.reference[1][2] || ''" #raison>
+
+
+            
+          </div>
+          
+
+          
+          
+    
+    <div class="boutton" style="margin-top: 40px;">
+      <button  class="boutton-link" (click)="SaveData()">Enregistrer</button>
+    </div>
+   </div> 
+</body>
+</html>
+

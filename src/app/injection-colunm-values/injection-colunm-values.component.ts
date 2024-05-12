@@ -43,7 +43,7 @@ export class InjectionColunmValuesComponent  {
       operator: "",
       parametreId :0,
       value: "",
-      actions:["","",""]
+      conditions:[]
   };
     let newRule: ParameterInjection = {
         id: 0,
@@ -79,7 +79,7 @@ export class InjectionColunmValuesComponent  {
               operator: operatorValue,
               parametreId :this.getIdByName(parameterValue),
               value: value,
-              actions:[parameterAction[i].nativeElement.value,operatorAction[i].nativeElement.value,valueAction[i].nativeElement.value]
+              conditions:[]
           };
           
           this.selectedParametre.valeurs.push(injectionVar);
