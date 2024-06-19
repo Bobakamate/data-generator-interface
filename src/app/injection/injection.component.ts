@@ -111,7 +111,7 @@ export class InjectionComponent  {
 
     // Afficher les règles mises à jour
     console.log("RulesList mise à jour :", this.RulesList);
-    this.router.navigate(['injection-box']);
+    this.router.navigate(['/app/injection-box']);
 }
 
   Deletes(id :number){
@@ -126,7 +126,7 @@ export class InjectionComponent  {
      return index;
 }
 AddConditions(id :number){
-     this.router.navigate(['conditions'], { queryParams: { id: id } });  }
+     this.router.navigate(['/app/conditions'], { queryParams: { id: id } });  }
 
 
 }

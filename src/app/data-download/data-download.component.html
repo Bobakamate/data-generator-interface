@@ -1,0 +1,23 @@
+<div class="container" style="display: flex;justify-content: start;align-items: center;flex-direction: column;">
+    <h2 style="color: white;text-align: center;">Téléchargement de Données</h2>
+
+    <div class="data-files" style="display: flex; justify-content: center; align-items: center;">
+        <div class="data-file"  *ngFor="let file of dataFiles">
+            <div class="file-info">
+                <h3 class="truncate" style="color: black;">{{ file.titre }}</h3>
+                <select name="" id="">
+                    <option value="csv">CSV</option>
+                    <option value="txt">TXT</option>
+                    <option value="xls">XLS</option>
+                    <option value="pdf">PDF</option>
+                    <option value="json">JSON</option>
+                    <option value="xml">XML</option>
+                </select>
+            </div>
+            <div class="actions">
+                <button (click)="downloadFile(file)">Télécharger</button>
+            </div>
+        </div>
+    </div>
+    
+</div>

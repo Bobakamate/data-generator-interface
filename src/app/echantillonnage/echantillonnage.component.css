@@ -1,0 +1,56 @@
+/* Styles pour l'élément de sélection de fichier */
+input[type="file"] {
+    outline: none; /* Supprime la bordure par défaut */
+    border: none; /* Supprime la bordure par défaut */
+    border-radius: 10px;
+    height: 50px;
+    width: 200px;
+    background-color: #ffffff; /* Couleur de fond du bouton de sélection */
+    color: #686ee0; /* Couleur du texte à l'intérieur du bouton */
+    font-size: 16px;
+    padding: 10px; /* Espacement à l'intérieur du bouton */
+    cursor: pointer; /* Curseur pointer pour indiquer l'interactivité */
+    transition: background-color 0.3s, color 0.3s; /* Transition douce pour l'effet de survol */
+  }
+  
+  input[type="file"]:hover {
+    background-color: #f0f0f0; /* Couleur de fond au survol */
+  }
+  
+  /* Styles pour les conteneurs des fichiers sélectionnés */
+  .file-container {
+    background-color: #f0f0f0; /* Couleur de fond du conteneur */
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px; /* Espacement entre chaque fichier sélectionné */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .file-container:hover {
+    background-color: #e0e0e0; /* Couleur de fond au survol */
+  }
+  
+  .file-name {
+    flex: 1; /* Permet au nom du fichier de prendre toute la largeur disponible */
+    overflow: hidden; /* Masque le texte débordant */
+    text-overflow: ellipsis; /* Affiche des points de suspension (...) pour indiquer le débordement */
+    white-space: nowrap; /* Empêche le texte de se mettre à la ligne */
+    margin-right: 10px; /* Espacement à droite du nom du fichier */
+    color: #686ee0; /* Couleur du texte */
+    font-size: 16px;
+  }
+  
+  /* Styles pour l'icône de suppression */
+  .file-container img {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    transition: transform 0.3s; /* Transition pour l'animation de transformation */
+  }
+  
+  .file-container img:hover {
+    transform: scale(1.2); /* Animation agrandissement au survol */
+  }
+  

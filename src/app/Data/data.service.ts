@@ -1,5 +1,119 @@
 import { Injectable } from '@angular/core';
-import { Data, Parameter, ParameterInjection,injections } from './DataModel';
+import { Application, Data, Parameter, ParameterInjection,Projet,injections } from './DataModel';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ApplicationService {
+  private appData: Application;
+ 
+
+  constructor() { 
+    this.appData = this.getApplication();
+  }
+  saveNumber(num: number): void {
+    sessionStorage.setItem('storedNumber', num.toString());
+  }
+
+  getSavedNumber(): number  {
+    const storedNumber = sessionStorage.getItem('storedNumber');
+    return storedNumber ? parseInt(storedNumber, 10) : -1;
+  }
+
+  saveApplication(application: Application): void {
+    sessionStorage.setItem('application', JSON.stringify(application));
+  }
+
+  getApplication(): Application  {
+    const storedApplication = sessionStorage.getItem('application');
+    return storedApplication ? JSON.parse(storedApplication) as Application :{
+       projects: [
+        {
+        id:0,
+        data :{ 
+          parametres: [], 
+          regles: [], 
+          injections: [], 
+          injectionsColunm: [], 
+          injectionsLine: { 
+            parameters: [], 
+            dynamicParameter: [], 
+            reference: [
+              [],
+              []
+            ] 
+          } 
+        },
+        titre:"Projet 1",
+        description:"Description du projet 1"
+        },
+        {
+          id:0,
+          data :{ 
+            parametres: [], 
+            regles: [], 
+            injections: [], 
+            injectionsColunm: [], 
+            injectionsLine: { 
+              parameters: [], 
+              dynamicParameter: [], 
+              reference: [
+                [],
+                []
+              ] 
+            } 
+          },
+          titre:"Projet 2",
+          description:"Description du projet 2"
+          }
+       ] 
+      }; ;
+  }
+
+  clearApplication(): void {
+    sessionStorage.removeItem('application');
+  }
+
+  // Fonction pour récupérer un projet par son ID
+  getProjectById(projectId: number): Projet | null {
+    const application = this.getApplication();
+    if (application) {
+      return application.projects.find(proj => proj.id === projectId) || null;
+    }
+    return null;
+  }
+
+  // Fonction pour récupérer l'index maximal des projets
+  getMaxProjectIndex(): number {
+    const application = this.getApplication();
+    if (application) {
+      return application.projects.reduce((maxIndex, proj) => proj.id > maxIndex ? proj.id : maxIndex, -1);
+    }
+    return -1;
+  }
+
+  // Fonction pour ajouter un projet à l'application
+  addProject(project: Projet): void {
+    const application = this.getApplication();
+    if (application) {
+      application.projects.unshift(project);
+      this.saveApplication(application);
+    }
+  }
+
+  // Fonction pour supprimer un projet de l'application par son ID
+  deleteProjectById(projectId: number): void {
+    const application = this.getApplication();
+    if (application) {
+      application.projects = application.projects.filter(proj => proj.id !== projectId);
+      this.saveApplication(application);
+    }
+  }
+
+
+
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -47,8 +161,20 @@ maxIndexInjection(): number {
 
 
   getSharedData(): Data {
+    
     return this.sharedData;
   }
+  getDataFromStorage(): Data {
+    const data = sessionStorage.getItem('sharedData');
+    if (data) {
+      console.log("c est la bonne recuperartion;::::::::::::::::::::::::::::::::::::: ");
+      return  this.sharedData = JSON.parse(data);
+      
+    }
+    return this.sharedData ;
+     
+  }
+  
 
   setSharedData(data: Data): void {
     this.sharedData = data;

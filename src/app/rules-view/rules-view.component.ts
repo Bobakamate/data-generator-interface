@@ -17,11 +17,11 @@ export class RulesViewComponent  {
   }
   
  edit(){
-   this.router.navigate(['rules']);
+   this.router.navigate(['/app/rules']);
 
  }
  next(){
-   this.router.navigate(['rules-box']);
+   this.router.navigate(['/app/rules-box']);
 
 
  }

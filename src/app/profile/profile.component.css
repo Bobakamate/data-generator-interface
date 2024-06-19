@@ -1,0 +1,65 @@
+.container {
+    background-color: #686ee0;
+    display: flex;
+    justify-content: center;
+     
+    align-items: center;
+     
+}
+
+.profile-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    border: 2px solid #686ee0; /* Couleur de bordure personnalisée */
+}
+
+.profile-info {
+    text-align: left;
+}
+
+.username {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8px;
+}
+
+.email {
+    color: #666666;
+    font-size: 1rem;
+}
+
+.logout-button {
+    background-color: #686ee0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #555abf;
+}

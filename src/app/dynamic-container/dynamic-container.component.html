@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sidebar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+ </head>
+<body>
+  <div style="display: flex; flex-direction: row;">
+    <div style="max-height: 100vh;background-color: #686ee0;">
+      <nav>
+        <div class="sidebar-top">
+          <a href="#" class="logo__wrapper">
+            
+            <h1 class="hide">Data Generator</h1>
+          </a>
+          <div class="expand-btn">
+            <img src="../../assets/chevron.svg" alt="Chevron">
+          </div>
+        </div>
+        <div class="sidebar-links">
+          <ul>
+            <li>
+              <a  routerLink="/app/projets"  class="tooltip">
+                <img src="../assets/projet.png" alt="Projet">
+                <span class="link hide">Projet</span>
+               
+              </a>
+            </li>
+            <li>
+              <a routerLink="/app/injection-box"  class="tooltip">
+                <img src="../assets/injection.png" alt="Injections">
+                <span class="link hide">Injections</span>
+               </a>
+            </li>
+            <li>
+              <a  routerLink="/app/echantillonnage"   class="tooltip">
+                <img src="../assets/echantillonage.png" alt="Echantillonnage">
+                <span class="link hide">Echantillonnage</span>
+               </a>
+            </li>
+            <li>
+              <a routerLink="/app/data"  class="tooltip">
+                <img src="../assets/data.png" alt="Data">
+                <span class="link hide">Data</span>
+               </a>
+            </li>
+           
+          </ul>
+        </div>
+        <div >
+          
+          <a routerLink="/app/profil" style="text-decoration: none; color: white;">
+            <div class="sidebar__profile">
+              <div class="avatar__wrapper" style="padding: 7px;">
+                <img class="avatar" src="assets/profil.jpg" alt="Profile">
+                <div class="online__status"></div>
+              </div>
+              <div class="avatar__name hide">
+                <div class="user-name">User</div>
+                <div class="email">user@gmail.com</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </nav>
+    </div>
+    <div id="container" style="position: absolute; left: 18rem; display: flex; justify-content: center; align-items: center; height: 100vh; width: calc(100% - 18rem);">
+    
+      <router-outlet></router-outlet>   
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

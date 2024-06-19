@@ -37,7 +37,7 @@ export class ReferenceComponent implements OnInit {
     this.sharedData.injectionsLine.reference = newReference;
     this.dataService.setSharedData(this.sharedData);
     console.log(this.sharedData.injectionsLine.reference);
-    this.router.navigate(['injection-line']);
+    this.router.navigate(['/app/injection-line']);
 
   }
 }

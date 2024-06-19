@@ -5,21 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <title>Titre de la page</title>
+     
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="background-color: #686ee0;">
         <p class="login-text">Echantillonnage de données</p>
-        <input type="file" (change)="onFileSelected($event)" style="outline: none;border-radius: 10px;height: 50px;width: 200px;" multiple>
-        <div class="file-container" *ngFor="let file of files" style="display: flex;justify-content: space-evenly;flex-direction: row; align-items: center;">
-          <p class="file-name" style="color: white;font-size: 20px;">{{ file.name }}</p>
-          <img src="../../assets/poubelle.png"  style="height: 30px; width: 30px;" (click)="deleteFile(file)" alt="Supprimer le fichier">
+        <input type="file" (change)="onFileSelected($event)" multiple>
+        <div class="file-container" *ngFor="let file of files">
+            <p class="file-name">{{ file.name }}</p>
+            <img src="../../assets/poubelle (1).png" (click)="deleteFile(file)" alt="Supprimer le fichier">
         </div>
-        <div class="boutton">
-          <button (click)="validate()" class="boutton-link">Valider</button>
+        <div class="boutton" style="padding: 20px;">
+            <button (click)="validate()">Valider</button>
         </div>
-      
-      
-    
-   </div> 
+    </div>
 </body>
 </html>

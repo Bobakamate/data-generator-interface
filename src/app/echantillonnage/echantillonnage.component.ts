@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-echantillonnage',
   templateUrl: './echantillonnage.component.html',
-  styleUrls: ['../home/home.component.css']
+  styleUrls: ['../home/home.component.css',"./echantillonnage.component.css"]
 })
 export class EchantillonnageComponent {
 

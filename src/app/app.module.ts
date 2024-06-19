@@ -19,6 +19,12 @@ import { EchantillonnageComponent } from './echantillonnage/echantillonnage.comp
 import { ConditionsComponent } from './conditions/conditions.component';
 import { ReferenceComponent } from './reference/reference.component';
 import { DynamicValuesComponent } from './dynamic-values/dynamic-values.component';
+import { ProjetComponent } from './projet/projet.component';
+import { DataDownloadComponent } from './data-download/data-download.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { DynamicContainerComponent } from './dynamic-container/dynamic-container.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +44,20 @@ import { DynamicValuesComponent } from './dynamic-values/dynamic-values.componen
     EchantillonnageComponent,
     ConditionsComponent,
     ReferenceComponent,
-    DynamicValuesComponent
+    DynamicValuesComponent,
+    ProjetComponent,
+    DataDownloadComponent,
+    LoginComponent,
+    DynamicContainerComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

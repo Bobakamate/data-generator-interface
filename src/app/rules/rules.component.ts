@@ -80,7 +80,7 @@ export class RulesComponent  {
 
     // Afficher les règles mises à jour
     console.log("RulesList mise à jour :", this.RulesList);
-    this.router.navigate(['rules-views']);
+    this.router.navigate(['/app/rules-views']);
 }
 
   Deletes(id :number){

@@ -1,0 +1,55 @@
+.container {
+    background-color: #686ee0;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.data-files {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.data-file {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.data-file .file-info {
+    flex: 1;
+}
+
+.data-file .file-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.data-file .actions button {
+    background-color: #686ee0;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.data-file .actions button:hover {
+    background-color: #3841e6;
+}
+.truncate {
+    white-space: nowrap; /* Empêche le texte de s'envelopper sur plusieurs lignes */
+    overflow: hidden;    /* Cache le texte qui dépasse la largeur du conteneur */
+    text-overflow: ellipsis; /* Ajoute des points de suspension (...) à la fin du texte tronqué */
+    max-width: 200px; /* Ajustez cette valeur en fonction de la taille de votre conteneur */
+    display: block; /* Assurez-vous que l'élément est un bloc ou un bloc en ligne */
+}

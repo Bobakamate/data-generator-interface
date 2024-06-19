@@ -7,14 +7,14 @@
     <title>Boba Fousseiny Kamate</title>
  </head>
 <body>
-    <div class="container">
+    <div class="container" style="background-color: #686ee0;">
         <ng-container *ngIf="selectedParametre; else error">
             <p class="login-text">Regles de Renmplissage ( {{ selectedParametre.parametreName }} )</p>
             
              <div *ngFor="let rule of selectedParametre.valeurs; let i = index" >
-                <div class="input-param">
-                    <select class="option-param" #parameter>
-                        <option *ngFor="let param of paramName" [value]="param" [selected]="rule.parametreName === param">{{ param }}</option>
+                <div class="input-param" >
+                    <select class="option-param"   #parameter>
+                        <option   *ngFor="let param1 of paramName" [value]="param1" [selected]="rule.parametreName === param1">{{param1 }}</option>
                     </select>
                     
                     <select class="option-param" #operator>
@@ -37,13 +37,13 @@
                     </select>
                     
                     <select class="option-param" #operatorAction>
-                        <option value="Egale" [selected]="rule.actions[1] === 'Egale'">Egale</option>
-                        <option value="Inferiere" [selected]="rule.actions[1] === 'Inferiere'">Inferiere</option>
-                        <option value="Superieur" [selected]="rule.actions[1] === 'Superieur'">Superieur</option>
-                        <option value="Intervalle" [selected]="rule.actions[1] === 'Intervalle'">Intervalle</option>
+                        <option value="Egale" [selected]="rule.conditions[0][1] === 'Egale'">Egale</option>
+                        <option value="Inferiere" [selected]="rule.conditions[0][1] === 'Inferiere'">Inferiere</option>
+                        <option value="Superieur" [selected]="rule.conditions[0][1] === 'Superieur'">Superieur</option>
+                        <option value="Intervalle" [selected]="rule.conditions[0][1] === 'Intervalle'">Intervalle</option>
                     </select>
                     
-                    <input type="text" placeholder="Actions" #valueAction [value]="rule.actions[2]">
+                    <input type="text" placeholder="Actions" #valueAction [value]="rule.conditions[0][2]">
                     
                  
                     

@@ -46,7 +46,7 @@ export class AddValuesComponent implements OnInit {
       this.dataService.updateParameter(this.selectedParametre);
     });
     this.selectedParametre = this.dataService.getParameterById(this.id);
-    this.router.navigate([''],);  
+    this.router.navigate(['/app/data-generation'],);  
 
   }
 

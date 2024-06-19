@@ -1,10 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
- body{
-    padding: 0px ;
-    margin: 0px;
-    min-height: 100vh;
-    min-width: 100vw;
- }
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    overflow: hidden;
+  }
+  :root {
+    --primary-color: #686ee0;
+    --text: #EDF0F7;
+    --sidebar-gray: #21033a;
+    --sidebar-gray-light: #F8F7FD;
+    --sidebar-gray-background: #6067EB;
+    --success: #00C896;
+    --white: #fff;
+  }
 .container{
     height: 500px;
     padding: 10px;

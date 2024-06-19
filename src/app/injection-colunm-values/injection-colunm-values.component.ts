@@ -6,7 +6,7 @@ import { Data, injections ,ParameterInjection} from '../Data/DataModel';
 @Component({
   selector: 'app-injection-colunm-values',
   templateUrl: './injection-colunm-values.component.html',
-  styleUrls: ['../home/home.component.css']
+  styleUrls: ['../home/home.component.css',"./injection-colunm-values.component.css"]
 })
 export class InjectionColunmValuesComponent  {
 
@@ -30,10 +30,12 @@ export class InjectionColunmValuesComponent  {
     this.id = +idstring;
     this.SharedData = dataService.getSharedData();
     this.paramName = dataService.getparamName();
-    console.log("les om de parametre ",this.paramName);
+   
     console.log("les om de parametre data service  ",dataService.getparamName());
     this.ParamId = dataService.getParamId();
     this.selectedParametre = this.dataService.getParameterByIdInjectionColunm(this.id);
+    console.log("les om de parametre ",this.selectedParametre);
+  
 
    }
    NewLine() {
@@ -43,7 +45,9 @@ export class InjectionColunmValuesComponent  {
       operator: "",
       parametreId :0,
       value: "",
-      conditions:[]
+      conditions:[
+        ["","",""]
+      ]
   };
     let newRule: ParameterInjection = {
         id: 0,
@@ -72,6 +76,9 @@ export class InjectionColunmValuesComponent  {
           const parameterValue = parameterInputs[i].nativeElement.value;
           const operatorValue = operatorInputs[i].nativeElement.value;
           const value = valueInputs[i].nativeElement.value;
+          const parameterActionValue = parameterAction[i].nativeElement.value ;
+          const operatorActionValue =  operatorAction[i].nativeElement.value;
+          const valueActionValue =  valueAction[i].nativeElement.value;
           
              let injectionVar :injections =  {
               id : i,
@@ -79,7 +86,13 @@ export class InjectionColunmValuesComponent  {
               operator: operatorValue,
               parametreId :this.getIdByName(parameterValue),
               value: value,
-              conditions:[]
+              conditions:[[
+                parameterActionValue,
+                operatorActionValue,
+                valueActionValue
+
+              ]
+              ]
           };
           
           this.selectedParametre.valeurs.push(injectionVar);
@@ -98,7 +111,7 @@ export class InjectionColunmValuesComponent  {
 
     // Afficher les règles mises à jour
     console.log("RulesList mise à jour :", this.RulesList);
-    this.router.navigate(['injection-box']);
+    this.router.navigate(['/app/injection-box']);
 }
 
   Deletes(id :number){

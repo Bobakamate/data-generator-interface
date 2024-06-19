@@ -12,21 +12,21 @@ export class RulesBoxComponent {
 
 
   add(){
-    this.router.navigate(['rules']);
+    this.router.navigate(['/app/rules']);
 
   }
   next(){
-    this.router.navigate(['visualisation']);
+    this.router.navigate(['/app/visualisation']);
 
 
   }
   injection(){
-    this.router.navigate(['injection-box']);
+    this.router.navigate(['/app/injection-box']);
 
 
   }
   echantillon(){
-    this.router.navigate(['echantillonnage']);
+    this.router.navigate(['/app/echantillonnage']);
 
 
   }

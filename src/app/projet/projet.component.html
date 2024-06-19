@@ -1,0 +1,44 @@
+<div class="container">
+   
+    <div style="margin-bottom: 30px;display: flex;align-items: center;flex-direction: column;justify-content: center;height: 100px;" >
+        <h2 style="color: black;">Liste des Projets</h2>
+         <img  style="height:40px;width:40px" src="../../assets/plus (1).png" (click)="ouvrirModal()" alt="ajout de ligne">
+     </div>
+  
+    <div class="projets">
+      <div class="projet" *ngFor="let projet of appData.projects">
+        <div class="projet-info">
+          <h3 style="color: black;" class="truncate">{{ projet.titre }}</h3>
+          <div class="description">
+            <p class="multi-line-truncate" >{{ projet.description }}</p>
+          </div>
+        </div>
+        <div class="actions">
+          <button (click)="ouvrirProjet(projet)">Ouvrir</button>
+        </div>
+      </div>
+    </div>
+  
+   
+  
+    <ng-container *ngIf="modalOuvert"> <!-- Modal pour ajouter un projet -->
+    <div style="background-color: #686ee0;" class="modal" [class.open]="modalOuvert">
+      
+          <div class="modal-content">
+            <h2>Ajouter un Projet</h2>
+            <label>Nom du Projet:</label>
+            <input type="text" placeholder="Nom du Projet" #titre>
+            <label>Description:</label>
+            <textarea placeholder="Description du Projet" #description></textarea>
+            <div class="modal-actions">
+              <button class="button" (click)="fermerModal()">Annuler</button>
+              <button (click)="ajouterProjet(titre.value, description.value)">Ajouter</button>
+            </div>
+          </div>
+        </div>
+        </ng-container>
+     
+      
+      
+  </div>
+  

@@ -29,7 +29,7 @@
     </style>
 </head>
 <body style="display: flex; flex-direction: column;justify-content: center;align-items: center;">
-   <div class="container" style="height: 450px;"  >
+   <div class="container" style="height: 450px;" style="background-color: #686ee0;" >
   <table  >
     <tr>
         <!-- Utiliser *ngFor pour parcourir tous les paramètres -->
@@ -49,15 +49,16 @@
     </tr>
    </td>
 </table>
+<div class ="boutton"  style="display: flex;justify-content: space-evenly; margin-top: 20px; width: 100%;color: rebeccapurple;">  
+    <div class="boutton" style="padding-left:40px ;">
+        <button class="boutton-link" (click)="edit()">Modifier</button>
+    </div>  
+    <div class="boutton" style="padding-right:40px ;">
+        <button  class="boutton-link" (click)="next()">Validé</button>
+    </div>  
+ </div> 
  </div>
 
-    <div class ="boutton"  style="display: flex;justify-content: space-evenly; margin-top: 20px; width: 100%;color: rebeccapurple;">  
-      <div class="boutton" style="padding-left:40px ;">
-          <button class="boutton-link" (click)="edit()">Modifier</button>
-      </div>  
-      <div class="boutton" style="padding-right:40px ;">
-          <button  class="boutton-link" (click)="next()">Validé</button>
-      </div>  
-   </div> 
+    
 </body>
 </html>

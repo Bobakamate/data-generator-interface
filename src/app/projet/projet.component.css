@@ -1,0 +1,141 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .projets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .projet {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .projet-info {
+    flex: 1;
+  }
+  
+  .actions {
+    margin-left: 10px;
+  }
+  
+  .actions button {
+    background-color: #686ee0;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .ajouter-projet {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .description {
+    display: -webkit-box;           /* Utilise un conteneur de boîte flexible */
+    -webkit-box-orient: vertical;   /* Définit l'orientation de la boîte comme verticale */
+    -webkit-line-clamp: 5;          /* Nombre maximum de lignes à afficher (ajustez selon vos besoins) */
+    overflow: hidden;               /* Cache le texte qui dépasse le conteneur */
+    text-overflow: ellipsis;        /* Ajoute des points de suspension à la fin du texte tronqué */
+    max-height: 100px;              /* Limite de la hauteur de la description */
+    color: black;
+    max-width: 250px;               /* Limite de la largeur de la description */
+    line-height: 1.2em;             /* Hauteur de ligne (ajustez selon vos besoins) */
+}
+
+  
+  .modal-content {
+    background-color: #686ee0;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    height: 90%; /* Pour une largeur maximale de 90% de la largeur de l'écran */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Ombre légère */
+    color: #ffffff;
+  }
+  
+  .modal-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .modal-content label {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .modal-content input,
+  .modal-content textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end; /* Aligner les boutons à droite */
+    margin-top: 15px;
+  }
+  .truncate {
+    white-space: nowrap; /* Empêche le texte de s'envelopper sur plusieurs lignes */
+    overflow: hidden;    /* Cache le texte qui dépasse la largeur du conteneur */
+    text-overflow: ellipsis; /* Ajoute des points de suspension (...) à la fin du texte tronqué */
+    max-width: 200px; /* Ajustez cette valeur en fonction de la taille de votre conteneur */
+    display: block; /* Assurez-vous que l'élément est un bloc ou un bloc en ligne */
+}
+  
+  .modal-actions button {
+    margin-left: 10px; /* Espacement entre les boutons */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .modal-actions button:first-child {
+    background-color: #ffffff;
+    color: #686ee0;
+  }
+  
+  .modal-actions button:last-child {
+    background-color: #00c896;
+    color: #ffffff;
+  }
+  
+  .modal.open {
+    display: flex;
+  }
+  
+  .multi-line-truncate {
+    display: -webkit-box;           /* Utilise un conteneur de boîte flexible */
+    -webkit-box-orient: vertical;   /* Définit l'orientation de la boîte comme verticale */
+    -webkit-line-clamp: 3;          /* Nombre maximum de lignes à afficher */
+    overflow: hidden;               /* Cache le texte qui dépasse le conteneur */
+    text-overflow: ellipsis;        /* Ajoute des points de suspension à la fin du texte tronqué */
+    max-width: 200px;               /* Ajustez cette valeur en fonction de la taille de votre conteneur */
+    line-height: 1.2em;             /* Ajuste la hauteur de la ligne */
+    height: 3.6em;                  /* Définit la hauteur en fonction du nombre de lignes et de la hauteur de ligne */
+}

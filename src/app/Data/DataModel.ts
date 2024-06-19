@@ -58,12 +58,27 @@ export interface Parameter {
     conditions : String[][]
 
   }
+
+  //la classe utiliserpar le projet .
   export interface Data {
     parametres: Parameter[];
     regles: Condition[];
     injections : injections[];
     injectionsColunm :  ParameterInjection[];
     injectionsLine : injectionsLine;
+
+  }
+  export interface Projet{
+    id:number;
+    data :Data;
+    titre:String;
+    description:String
+
+
+  }
+  
+  export interface Application{
+    projects: Projet[]
 
   }
   

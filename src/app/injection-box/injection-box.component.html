@@ -8,7 +8,7 @@
     <title>Boba Fousseiny Kamate</title>
  </head>
 <body>
-   <div class="container">
+   <div class="container" style="background-color: #686ee0;">
  
      
         <p class="login-text">Injections de donnees</p>
@@ -38,12 +38,21 @@
                 <p style="color: white;font-size: 18px;font-weight: bold;">Ajout de Colonnes</p>  
                 <img  style="height:50px;width:50px" src="../../assets/columns.png"  alt="ajout de ligne">
              </div>  
-             <div style="margin-bottom: 40px;display: flex;align-items: center;flex-direction: column;"(click)="Back()">
-                <p style="color: white;font-size: 18px;font-weight: bold;">Retour</p>  
-                <img  style="height:50px;width:50px" src="../../assets/log-out.png"  alt="ajout de ligne">
-             </div>      
+             <div style="margin-bottom: 40px; display: flex; align-items: center; flex-direction: column;">
+               <p style="color: white; font-size: 18px; font-weight: bold;">Upload un fichier</p>  
+               <img style="height: 50px; width: 50px;" src="../../assets/fichier.png" (click)="triggerFileInput()" alt="Ajout de fichier">
+               <input type="file" #fileInput style="display: none;" (change)="uploadFile($event)">
+               <p style="margin-top: 10px;">{{ uploadedFileName }}</p>
+             </div>
+             
+           
+                 
          </div>
+         
      </div>
+     <div class="boutton"   >
+      <button class="button-add-param" style="margin-bottom: 40px;" >Cree</button>
+      </div> 
    </div> 
 </body>
 </html>

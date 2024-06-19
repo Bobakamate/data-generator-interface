@@ -62,7 +62,7 @@ export class DynamicValuesComponent implements OnInit {
     this.sharedData.injectionsLine.dynamicParameter = this.dynamicParameters;
     this.dataService.setSharedData(this.sharedData);
     console.log(this.sharedData.injectionsLine);
-    this.router.navigate(['injection-line']);
+    this.router.navigate(['/app/injection-line']);
   }
   Deletes(index : number){
     this.dataService.deleteDynamicValueByIndex(index);

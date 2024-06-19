@@ -1,0 +1,94 @@
+body{
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+ }
+.container{
+  padding: 10px;
+  height: 400px;
+  width: 400px;
+  border-radius: 15px;
+  border: 1px solid white;
+  backdrop-filter: blur(10px);
+  background-color: #686ee0;
+   
+}
+.login-text {
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  font-size: 25px;
+
+   
+}
+.input-text{
+  
+  
+ margin-bottom: 16px;
+  
+  
+  position: relative;
+   width: 95%;
+  height: 40px;
+}
+.input-text input{
+  padding-left: 8px;
+  
+  
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+
+
+
+}
+.input-text svg {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.Remenber-section{
+  display: flex;
+   align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+.boutton
+{
+  display: flex;
+  justify-content: center;
+}
+.boutton button{
+  background-color: white;
+  color: black;
+  height: 40px;
+  width: 150px;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+}
+.boutton button:hover{
+  background-color: #21033a;
+  color: white;
+
+}
+.bottom-section{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  
+}
+a{
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}

@@ -22,7 +22,7 @@ export class InjectionColunmComponent  {
   }
 
   addValues( id :number ): void {
-    this.router.navigate(['injection-add-values'], { queryParams: { id: id } });  }
+    this.router.navigate(['/app/injection-add-values'], { queryParams: { id: id } });  }
 
 
   Deletes( id :number ): void {
@@ -79,7 +79,7 @@ export class InjectionColunmComponent  {
   
        this.sharedDataParam = parametres;
        
-      this.router.navigate(['injection-box'])
+      this.router.navigate(['/app/injection-box'])
       
     }
 }

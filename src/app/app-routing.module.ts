@@ -16,30 +16,45 @@ import { EchantillonnageComponent } from './echantillonnage/echantillonnage.comp
 import { ConditionsComponent } from './conditions/conditions.component';
 import { ReferenceComponent } from './reference/reference.component';
 import { DynamicValuesComponent } from './dynamic-values/dynamic-values.component';
+import { ProjetComponent } from './projet/projet.component';
+import { DataDownloadComponent } from './data-download/data-download.component';
+import { LoginComponent } from './login/login.component'; // Import du composant de connexion
+import { AppComponent } from './app.component'; // Import de AppComponent pour la route principale
+import { DynamicContainerComponent } from './dynamic-container/dynamic-container.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent }, // Route de connexion
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirection vers la page de connexion par défaut
+  { 
+    path: 'app', 
+    component: DynamicContainerComponent, 
+    children: [
+      { path: 'add-values', component: AddValuesComponent },
+      { path: 'rules-box', component: RulesBoxComponent },
+      { path: 'rules', component: RulesComponent },
+      { path: 'visualisation', component: VisualisationComponent },
+      { path: 'rules-views', component: RulesViewComponent },
+      { path: 'injection-box', component: InjectionBoxComponent },
+      { path: 'injection', component: InjectionComponent },
+      { path: 'injection-line', component: InjectionLineComponent },
+      { path: 'injection-colunm', component: InjectionColunmComponent },
+      { path: 'injection-add-values', component: InjectionColunmValuesComponent },
+      { path: 'echantillonnage', component: EchantillonnageComponent },
+      { path: 'conditions', component: ConditionsComponent },
+      { path: 'generation', component: GenerationComponent },
+      { path: 'reference', component: ReferenceComponent },
+      { path: 'dynamic-values', component: DynamicValuesComponent },
+      { path: 'projets', component: ProjetComponent },
+      { path: 'data', component: DataDownloadComponent },
+      { path: '', redirectTo: '/app/projets', pathMatch: 'full' }, 
+      { path: 'profil', component: ProfileComponent },
+      { path: 'data-generation', component: HomeComponent },
+ 
 
-  {path : "",component : HomeComponent},
-  {path:"add-values", component:AddValuesComponent},
-  {path:"rules-box", component:RulesBoxComponent},
-  {path:"rules", component:RulesComponent},
-  {path:"visualisation", component:VisualisationComponent},
-  {path:"rules-views", component:RulesViewComponent},
-  {path:"injection-box", component:InjectionBoxComponent},
-  {path:"injection", component:InjectionComponent},
-  {path:"injection-line", component:InjectionLineComponent},
-  {path:"injection-colunm", component:InjectionColunmComponent},
-  {path:"injection-add-values", component:InjectionColunmValuesComponent},
-  {path:"echantillonnage", component:EchantillonnageComponent},
-  {path:"conditions",component:ConditionsComponent},
-  {path:"generation", component:GenerationComponent},
-  {path:"reference", component:ReferenceComponent},
-  {path:"dynamic-values", component:DynamicValuesComponent},
-
-
-
-
-];
+    ]
+  },
+ ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

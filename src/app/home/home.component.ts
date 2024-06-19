@@ -14,14 +14,16 @@ export class HomeComponent {
   sharedData : Data ;
  
   constructor(private router: Router, private dataService: DataService) { 
-    this.sharedData = dataService.getSharedData();
+    this.sharedData = dataService.getDataFromStorage();
+    console.log("this sared data from projet ::::::::::::::::::::::::::::::::::::::::::::::");
+    console.log(this.sharedData);
     this.sharedDataParam = [];
   
     this.sharedDataParam = this.sharedData.parametres;
   }
 
   addValues( id :number ): void {
-    this.router.navigate(['add-values'], { queryParams: { id: id } });  }
+    this.router.navigate(['/app/add-values'], { queryParams: { id: id } });  }
 
 
   Deletes( id :number ): void {
@@ -67,7 +69,7 @@ export class HomeComponent {
  
     }
     next(){
-      this.router.navigate(['rules-box'])
+      this.router.navigate(['/app/rules-box'])
       
     }
 }

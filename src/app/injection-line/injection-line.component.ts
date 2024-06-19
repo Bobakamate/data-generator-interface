@@ -50,6 +50,7 @@ export class InjectionLineComponent implements OnInit {
      this.sharedData.injectionsLine.parameters = this.selectedParameters;
      this.dataService.setSharedData(this.sharedData);
      console.log(this.sharedData.injectionsLine);
+     this.router.navigate(['/app/injection-box']);
   }
 
   removeParameter(index: number): void {
@@ -57,11 +58,11 @@ export class InjectionLineComponent implements OnInit {
   }
 
   dynamicValues(): void {
-    this.router.navigate(['dynamic-values']);
+    this.router.navigate(['/app/dynamic-values']);
   }
 
   reference(): void {
-    this.router.navigate(['reference']);
+    this.router.navigate(['/app/reference']);
   }
 }
 

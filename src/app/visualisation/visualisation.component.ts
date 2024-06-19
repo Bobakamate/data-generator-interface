@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Value,Parameter ,Data} from '../Data/DataModel';
-import { DataService } from '../Data/data.service';
+import { Value,Parameter ,Data, Application} from '../Data/DataModel';
+import { ApplicationService, DataService } from '../Data/data.service';
 
 @Component({
   selector: 'app-visualisation',
@@ -10,17 +10,28 @@ import { DataService } from '../Data/data.service';
 })
 export class VisualisationComponent {
   SharedData : Data;// this.SharedData.parametres liste qui contein t les nom des parametrre 
-   //  this.SharedData.parametres[id].valeurs  liste contenant les valeur pour chaque paramettre en corelation avec la liste Parametre
-
-   constructor(private router: Router, private dataService: DataService) { 
+  appData :Application;
+ 
+   constructor(private router: Router, private dataService: DataService, private appService :ApplicationService) { 
     this.SharedData = dataService.getSharedData();
    }
   edit(){
-    this.router.navigate(['']);
+    this.router.navigate(['/app/data-generation']);
 
   }
   next(){
-    this.router.navigate(['generation']);
+    const id = this.appService.getSavedNumber()
+   
+   let projet =  this.appService.getProjectById(id);
+   if(projet){
+    projet.data = this.SharedData;
+    this.appService.deleteProjectById(id);
+    this.appService.addProject(projet)
+
+   }
+
+
+    this.router.navigate(['/app/generation']);
 
 
   }
