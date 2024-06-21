@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';  // Import the HttpClientModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,9 +24,9 @@ import { DynamicValuesComponent } from './dynamic-values/dynamic-values.componen
 import { ProjetComponent } from './projet/projet.component';
 import { DataDownloadComponent } from './data-download/data-download.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
 import { DynamicContainerComponent } from './dynamic-container/dynamic-container.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -49,15 +51,16 @@ import { ProfileComponent } from './profile/profile.component';
     DataDownloadComponent,
     LoginComponent,
     DynamicContainerComponent,
-    ProfileComponent
+    ProfileComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule  // Add HttpClientModule here
   ],
   providers: [],
   bootstrap: [AppComponent]
-  
 })
 export class AppModule { }

@@ -2,6 +2,7 @@
     max-width: 800px;
     margin: auto;
     padding: 20px;
+    overflow-x: hidden;
   }
   
   .projets {
@@ -24,8 +25,9 @@
   }
   
   .actions {
-    margin-left: 10px;
-  }
+    max-width: 100px;
+ 
+   }
   
   .actions button {
     background-color: #686ee0;

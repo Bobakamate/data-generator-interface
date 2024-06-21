@@ -22,10 +22,12 @@ import { LoginComponent } from './login/login.component'; // Import du composant
 import { AppComponent } from './app.component'; // Import de AppComponent pour la route principale
 import { DynamicContainerComponent } from './dynamic-container/dynamic-container.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent }, // Route de connexion
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirection vers la page de connexion par défaut
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'registration', component: SignUpComponent }, // Redirection vers la page de connexion par défaut
   { 
     path: 'app', 
     component: DynamicContainerComponent, 
@@ -50,6 +52,13 @@ const routes: Routes = [
       { path: '', redirectTo: '/app/projets', pathMatch: 'full' }, 
       { path: 'profil', component: ProfileComponent },
       { path: 'data-generation', component: HomeComponent },
+      { path: 'registration', component: SignUpComponent },
+      { path: 'refresh', redirectTo: '/app/projets', pathMatch: 'full' }, 
+
+
+      
+
+
  
 
     ]

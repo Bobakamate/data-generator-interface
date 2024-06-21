@@ -1,18 +1,16 @@
-
-
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { ApiServiceService } from '../api-service.service';
-import { Data } from '../Data/DataModel';
+import { Data, Router } from '@angular/router';
 import { ApplicationService } from '../Data/data.service';
+import { ApiServiceService } from '../api-service.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
 })
-export class LoginComponent {
+export class SignUpComponent  {
+
   username: string;
   password: string;
   sharedData :Data;
@@ -25,19 +23,13 @@ export class LoginComponent {
   }
 
   loginUser(username: string, password: string) {
-    this.dataService.loginUser(username, password).subscribe(response => {
-      console.log("Projet ",response.user);
-      this.dataService.setUsername(response.user.username);
-      console.log("getUsername get ::::::::::::",this.dataService.geUsername())
+    this.dataService.createUser(username, password).subscribe(response => {
+      console.log("Projet ",response.projects);
       console.log("Token ",response.token);
-      this.dataService.setId(response.user._id);
-      
 
 
       console.log('User logged in', response);
       this.dataService.setToken(response.token);
-      console.log("TOkken get eget  ::::::::::::",this.dataService.getToken())
-
     //  this.getUserProjects(response.user._id);
       this.appService.saveApplication(
         {
@@ -45,10 +37,10 @@ export class LoginComponent {
         }
       )
        
-      this.router.navigate(['/app']);
+      this.router.navigate(['/login']);
     }, error => {
-      alert('Username ou mot de passe incorrect');
-      console.log('Login error', error);
+      alert("Username deja utiliser");
+      console.log('create error', error);
     });
   }
 
@@ -60,4 +52,3 @@ export class LoginComponent {
     });
   }
 }
-

@@ -6,15 +6,24 @@
      </div>
   
     <div class="projets">
-      <div class="projet" *ngFor="let projet of appData.projects">
+      <div class="projet" *ngFor="let projet of projetItem">
         <div class="projet-info">
           <h3 style="color: black;" class="truncate">{{ projet.titre }}</h3>
           <div class="description">
             <p class="multi-line-truncate" >{{ projet.description }}</p>
           </div>
         </div>
-        <div class="actions">
+        <div class="actions" style="display: flex;flex-direction: column;align-items: center;justify-content: space-evenly;">
           <button (click)="ouvrirProjet(projet)">Ouvrir</button>
+          <div style="display: flex;flex-direction: row;justify-content: center;align-items:center ;width: 200px;margin-top: 30px;">
+            <img src="../../assets/poubelle (1).png" height="24" width="24" (click)="deleteP(projet)">
+            <div style=" margin-left: 20px;display: flex;justify-content: center; align-items: center;">
+              <svg xmlns="http://www.w3.org/2000/svg"   (click)="downloadJsonFile(projet)" viewBox="0 0 24 24" width="30" height="30">
+                <path d="M12 15.586V3h-1v12.586l-2.293-2.293-0.707 0.707L12 18.707l4-4-1.414-1.414-2.293 2.293zM19 20H5v2h14v-2z"/>
+              </svg>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -24,7 +33,21 @@
     <ng-container *ngIf="modalOuvert"> <!-- Modal pour ajouter un projet -->
     <div style="background-color: #686ee0;" class="modal" [class.open]="modalOuvert">
       
+      
           <div class="modal-content">
+           <div style="display:flex; align-items: center;justify-content: end;">
+           <div style=" width: 200px;display: flex;align-items: center;flex-direction: column;">
+            <label for="file-upload" style="cursor: pointer;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
+                <path d="M12 2L2 12h5v8h10v-8h5L12 2zm0 5v9h-2V7h2z"/>
+              </svg>
+            </label>
+            <input id="file-upload" type="file" (change)="onFileSelected($event)" accept=".json" style="display: none;">
+            <p>Upluad un projet</p>
+           </div>
+            
+           </div>
+
             <h2>Ajouter un Projet</h2>
             <label>Nom du Projet:</label>
             <input type="text" placeholder="Nom du Projet" #titre>
